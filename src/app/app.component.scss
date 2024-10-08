@@ -1,0 +1,92 @@
+
+.img-logo {
+    width: 5%;
+    display: flex;
+    justify-content: start;
+  }
+
+.container-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 300px;
+    border-radius: 60px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h2 {
+    font-size: 50px;
+    font-family: 'Arial';
+    color:rgb(0, 121, 111);
+    text-align: center;
+    position: relative;
+    text-shadow: 0 4px 10px rgba(0, 129, 119, 0.2);
+  }
+
+  h5 {
+    font-size: 25px;
+    font-family: 'Arial';
+    font-weight: bold;
+    color:rgb(0, 121, 111);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-shadow: 0 4px 10px rgba(0, 129, 119, 0.2);
+  }
+
+  h6 {
+    max-width: 300px;
+    font-size: 16px;
+    font-family: 'Arial';
+    font-weight: 500;
+    color:rgb(0, 0, 0);
+    margin-top: 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .fondo-home {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 60px;
+  }
+
+  .container-form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+  .card {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .card-body {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+    .card-footer {
+    margin-top: 10px;
+}
+
+.price {
+    flex-grow: 1;
+    text-align: center;
+}
+  .total {
+    margin-top: 20px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: end;
+  }
