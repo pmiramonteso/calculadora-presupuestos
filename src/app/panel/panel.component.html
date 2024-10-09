@@ -1,0 +1,21 @@
+<div class="panel">
+    <h3>Ajustar servicio de página web</h3>
+  
+    <div>
+      <label for="pages">Número de páginas:</label>
+      <button (click)="decrementPages()">-</button>
+      <input type="number" id="pages" [(ngModel)]="numberOfPages" (ngModelChange)="calculateTotal()" />
+      <button (click)="incrementPages()">+</button>
+    </div>
+  
+    <div>
+      <label for="languages">Número de idiomas:</label>
+      <button (click)="decrementLanguages()">-</button>
+      <input type="number" id="languages" [(ngModel)]="numberOfLanguages" (ngModelChange)="calculateTotal()" />
+      <button (click)="incrementLanguages()">+</button>
+    </div>
+  
+    <div>
+      <p>Costo adicional: {{ (numberOfPages * pricePerPage) + (numberOfLanguages * pricePerLanguage) }} €</p>
+    </div>
+  </div>
