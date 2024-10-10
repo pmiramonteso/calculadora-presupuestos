@@ -28,7 +28,7 @@ export class PanelComponent {
   }
 
   decrementoPaginas() {
-    if (this.numeroDePaginas > 1) {
+    if (this.numeroDePaginas > 0) {
       this.numeroDePaginas--;
       this.calcularTotal();
     }
@@ -40,7 +40,7 @@ export class PanelComponent {
   }
 
   decrementoIdiomas() {
-    if (this.numeroDeIdiomas > 1) {
+    if (this.numeroDeIdiomas > 0) {
       this.numeroDeIdiomas--;
       this.calcularTotal();
     }
