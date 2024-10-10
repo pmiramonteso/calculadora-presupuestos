@@ -1,49 +1,58 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { BudgetService } from '../service/budget.service';
 import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [FormsModule, ModalComponent],
+  imports: [ReactiveFormsModule, ModalComponent],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss'
 })
 export class PanelComponent {
-
-  numeroDePaginas: number = 0;
-  numeroDeIdiomas: number = 0;
-  precioPorPagina: number = 30;
-  precioPorIdioma: number = 30;
-
   @Output() totalWebCost = new EventEmitter<number>();
 
-  calcularTotal() {
-    const total = (this.numeroDePaginas * this.numeroDeIdiomas) * 30;
-    this.totalWebCost.emit(total);
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder, private budgetService: BudgetService) {
+    this.form = this.fb.group({
+      numeroDePaginas: [0],
+      numeroDeIdiomas: [0]
+    });
+
+    this.form.valueChanges.subscribe(values => {
+      const total = this.budgetService.calcularTotal(values.numeroDePaginas, values.numeroDeIdiomas);
+      this.totalWebCost.emit(total);
+      this.budgetService.actualizarPresupuesto(total);
+    });
   }
 
   incrementoPaginas() {
-    this.numeroDePaginas++;
-    this.calcularTotal();
+    this.form.patchValue({
+      numeroDePaginas: this.form.value.numeroDePaginas + 1
+    });
   }
 
   decrementoPaginas() {
-    if (this.numeroDePaginas > 0) {
-      this.numeroDePaginas--;
-      this.calcularTotal();
+    if (this.form.value.numeroDePaginas > 0) {
+      this.form.patchValue({
+        numeroDePaginas: this.form.value.numeroDePaginas - 1
+      });
     }
   }
 
   incrementoIdiomas() {
-    this.numeroDeIdiomas++;
-    this.calcularTotal();
+    this.form.patchValue({
+      numeroDeIdiomas: this.form.value.numeroDeIdiomas + 1
+    });
   }
 
   decrementoIdiomas() {
-    if (this.numeroDeIdiomas > 0) {
-      this.numeroDeIdiomas--;
-      this.calcularTotal();
+    if (this.form.value.numeroDeIdiomas > 0) {
+      this.form.patchValue({
+        numeroDeIdiomas: this.form.value.numeroDeIdiomas - 1
+      });
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PanelComponent } from '../panel/panel.component';
+import { BudgetService } from '../service/budget.service';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +14,13 @@ export class HomeComponent {
   form: FormGroup;
   total: number = 0;
   webCost: number = 0;
-  number: number = 0; 
 
   precios = {
     seo: 300,
     ads: 400,
     web: 500
 };
-constructor(private fb: FormBuilder) {
+constructor(private fb: FormBuilder, private budgetService: BudgetService) {
 
   this.form = this.fb.group({
     seo: [false], 
@@ -44,6 +44,7 @@ calcularTotal(values: any) {
   if (values.web) {
       this.total += this.precios.web + (this.webCost ?? 0);
   }
+  this.budgetService.actualizarPresupuesto(this.total);
 }
 
 onWebCostChange(cost: number) {

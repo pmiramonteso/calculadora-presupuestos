@@ -1,21 +1,23 @@
+<form [formGroup]="form">
 <div class="panel">
-    <h3>Personaliza tu página</h3>
-  
-    <div id="paginas">
-      <label for="paginas">Número de páginas:</label>
-      <button (click)="decrementoPaginas()">-</button>
-      <input type="number" id="paginas" [(ngModel)]="numeroDePaginas" (ngModelChange)="calcularTotal()" />
-      <button (click)="incrementoPaginas()">+</button>
-    </div>
-  
-    <div id="idiomas">
-      <label for="idiomas">Número de idiomas:</label>
-      <button (click)="decrementoIdiomas()">-</button>
-      <input type="number" id="idiomas" [(ngModel)]="numeroDeIdiomas" (ngModelChange)="calcularTotal()" />
-      <button (click)="incrementoIdiomas()">+</button>
-    </div>
-  
-    <div id="costo-adicional">
-      <h4>Costo adicional: {{ (numeroDePaginas * precioPorPagina) + (numeroDeIdiomas * precioPorIdioma) }} €</h4>
-    </div>
+  <h3>Personaliza tu página</h3>
+
+  <div id="paginas">
+    <label for="paginas">Número de páginas:</label>
+    <button (click)="decrementoPaginas()">-</button>
+    <input type="number" id="paginas" formControlName="numeroDePaginas" />
+    <button (click)="incrementoPaginas()">+</button>
   </div>
+
+  <div id="idiomas">
+    <label for="idiomas">Número de idiomas:</label>
+    <button (click)="decrementoIdiomas()">-</button>
+    <input type="number" id="idiomas" formControlName="numeroDeIdiomas" />
+    <button (click)="incrementoIdiomas()">+</button>
+  </div>
+
+  <div id="costo-adicional">
+    <h4>Costo adicional: {{ (form.get('numeroDePaginas')?.value * 30) + (form.get('numeroDeIdiomas')?.value * 30) }} €</h4>
+  </div>
+</div>
+</form>
