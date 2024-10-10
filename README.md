@@ -1,27 +1,37 @@
-# PresupuestoApp
+Web calculadora de presupuestos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+📄 Descripción
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+💻 Tecnologías Utilizadas
 
-## Code scaffolding
+Angular 18
+TypeScript
+SASS
+Bootstrap
+Node.js para gestionar las dependencias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+📋 Requisitos
 
-## Build
+Node.js (v14 o superior)
+Angular CLI (v13 o superior)
+npm (v6 o superior)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+🛠️ Instalación
+Para instalar el proyecto en un entorno local, sigue estos pasos:
 
-## Running unit tests
+Clona el repositorio:
+git clone https://github.com/pmiramonteso/sprint-6.git
+Navega al directorio del proyecto: cd sprint-6
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Instala las dependencias de Node.js: npm install
 
-## Running end-to-end tests
+▶️ Ejecución Una vez que hayas instalado las dependencias, puedes ejecutar la aplicación con el siguiente comando:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ng serve La aplicación estará disponible en http://localhost:4200/.
 
-## Further help
+🌐 Despliegue Para desplegar el proyecto en un entorno de producción, sigue estos pasos:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Genera una versión optimizada para producción: ng build --prod El contenido generado se encontrará en la carpeta dist/. Puedes servir estos archivos en cualquier servidor web estático o configurar un servidor como Nginx o Apache para manejar la distribución.
+
+🤝 Contribuciones Las contribuciones son bienvenidas. Si deseas colaborar, siéntete libre de hacer un fork del repositorio.
