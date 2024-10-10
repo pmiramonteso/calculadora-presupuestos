@@ -10,39 +10,39 @@ import { FormsModule } from '@angular/forms';
 })
 export class PanelComponent {
 
-  numberOfPages: number = 1;
-  numberOfLanguages: number = 1;
-  pricePerPage: number = 100;
-  pricePerLanguage: number = 50;
+  numeroDePaginas: number = 0;
+  numeroDeIdiomas: number = 0;
+  precioPorPagina: number = 30;
+  precioPorIdioma: number = 30;
 
   @Output() totalWebCost = new EventEmitter<number>();
 
-  calculateTotal() {
-    const total = (this.numberOfPages * this.pricePerPage) + (this.numberOfLanguages * this.pricePerLanguage);
+  calcularTotal() {
+    const total = (this.numeroDePaginas * this.numeroDeIdiomas) * 30;
     this.totalWebCost.emit(total);
   }
 
-  incrementPages() {
-    this.numberOfPages++;
-    this.calculateTotal();
+  incrementoPaginas() {
+    this.numeroDePaginas++;
+    this.calcularTotal();
   }
 
-  decrementPages() {
-    if (this.numberOfPages > 1) {
-      this.numberOfPages--;
-      this.calculateTotal();
+  decrementoPaginas() {
+    if (this.numeroDePaginas > 1) {
+      this.numeroDePaginas--;
+      this.calcularTotal();
     }
   }
 
-  incrementLanguages() {
-    this.numberOfLanguages++;
-    this.calculateTotal();
+  incrementoIdiomas() {
+    this.numeroDeIdiomas++;
+    this.calcularTotal();
   }
 
-  decrementLanguages() {
-    if (this.numberOfLanguages > 1) {
-      this.numberOfLanguages--;
-      this.calculateTotal();
+  decrementoIdiomas() {
+    if (this.numeroDeIdiomas > 1) {
+      this.numeroDeIdiomas--;
+      this.calcularTotal();
     }
   }
 }

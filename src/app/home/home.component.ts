@@ -12,9 +12,10 @@ import { PanelComponent } from '../panel/panel.component';
 export class HomeComponent {
   form: FormGroup;
   total: number = 0;
-  webCost: number | null = 0;
+  webCost: number = 0;
+  number: number = 0; 
 
-  prices = {
+  precios = {
     seo: 300,
     ads: 400,
     web: 500
@@ -28,26 +29,26 @@ constructor(private fb: FormBuilder) {
   });
 
   this.form.valueChanges.subscribe(values => {
-    this.calculateTotal(values);
+    this.calcularTotal(values);
   });
 }
 
-calculateTotal(values: any) {
+calcularTotal(values: any) {
   this.total = 0;
   if (values.seo) {
-      this.total += this.prices.seo;
+      this.total += this.precios.seo;
   }
   if (values.ads) {
-      this.total += this.prices.ads;
+      this.total += this.precios.ads;
   }
   if (values.web) {
-      this.total += this.prices.web + (this.webCost ?? 0);
+      this.total += this.precios.web + (this.webCost ?? 0);
   }
 }
 
 onWebCostChange(cost: number) {
   this.webCost = cost;
-  this.calculateTotal(this.form.value);
+  this.calcularTotal(this.form.value);
 }
 
 }

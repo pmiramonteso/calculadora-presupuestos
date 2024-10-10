@@ -17,9 +17,9 @@
           <div class="card-body">
             <div class="service-info">
               <h5 class="card-title">SEO</h5>
-              <h6 class="card-subtitle">Programació d'una web responsive completa</h6>
+              <h6 class="card-subtitle">Publicidad SEO</h6>
             </div>
-            <div class="price">300 €</div>
+            <div class="precio">300 €</div>
             <div class="service-checkbox">
               <input type="checkbox" formControlName="seo" />
             </div>
@@ -30,9 +30,9 @@
           <div class="card-body">
             <div class="service-info">
               <h5 class="card-title">ADS</h5>
-              <h6 class="card-subtitle">Programació d'una web responsive completa</h6>
+              <h6 class="card-subtitle">Programación de publicidad ADS</h6>
             </div>
-            <div class="price">400 €</div>
+            <div class="precio">400 €</div>
             <div class="service-checkbox">
               <input type="checkbox" formControlName="ads" />
             </div>
@@ -45,14 +45,19 @@
               <h5 class="card-title">WEB</h5>
               <h6 class="card-subtitle">Programació d'una web responsive completa</h6>
             </div>
-            <div class="price">500 €</div>
+            <div class="precio">500 €</div>
             <div class="service-checkbox">
-              <input type="checkbox" formControlName="web" (change)="onWebCostChange($event.target.checked ? 0 : null)" />
+              <input type="checkbox" formControlName="web"/>
+            </div>
+            <div>
+              @if (form.get("web")?.value) {
+                <app-panel (totalWebCost)="onWebCostChange($event)"></app-panel>
+              }
             </div>
           </div>
         </div>
 
-        <app-panel *ngIf="form.value.web" (totalWebCost)="onWebCostChange($event)"></app-panel>
+        
 
     </form>
   

@@ -1,21 +1,21 @@
 <div class="panel">
-    <h3>Ajustar servicio de página web</h3>
+    <h3>Personaliza tu página</h3>
   
-    <div>
-      <label for="pages">Número de páginas:</label>
-      <button (click)="decrementPages()">-</button>
-      <input type="number" id="pages" [(ngModel)]="numberOfPages" (ngModelChange)="calculateTotal()" />
-      <button (click)="incrementPages()">+</button>
+    <div id="paginas">
+      <label for="paginas">Número de páginas:</label>
+      <button (click)="decrementoPaginas()">-</button>
+      <input type="number" id="paginas" [(ngModel)]="numeroDePaginas" (ngModelChange)="calcularTotal()" />
+      <button (click)="incrementoPaginas()">+</button>
     </div>
   
-    <div>
-      <label for="languages">Número de idiomas:</label>
-      <button (click)="decrementLanguages()">-</button>
-      <input type="number" id="languages" [(ngModel)]="numberOfLanguages" (ngModelChange)="calculateTotal()" />
-      <button (click)="incrementLanguages()">+</button>
+    <div id="idiomas">
+      <label for="idiomas">Número de idiomas:</label>
+      <button (click)="decrementoIdiomas()">-</button>
+      <input type="number" id="idiomas" [(ngModel)]="numeroDeIdiomas" (ngModelChange)="calcularTotal()" />
+      <button (click)="incrementoIdiomas()">+</button>
     </div>
   
-    <div>
-      <p>Costo adicional: {{ (numberOfPages * pricePerPage) + (numberOfLanguages * pricePerLanguage) }} €</p>
+    <div id="costo-adicional">
+      <h4>Costo adicional: {{ (numeroDePaginas * precioPorPagina) + (numeroDeIdiomas * precioPorIdioma) }} €</h4>
     </div>
   </div>
