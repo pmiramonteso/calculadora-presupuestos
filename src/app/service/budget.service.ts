@@ -12,7 +12,7 @@ export class BudgetService {
     if (seo) total += 300;
     if (ads) total += 400;
     if (web) total += 500 + webCost;
-   
+  
     total += (numeroDePaginas * 30) + (numeroDeIdiomas * 30);
     
     return total;
@@ -20,5 +20,6 @@ export class BudgetService {
 
   actualizarPresupuesto(total: number): void {
     this.totalPresupuesto = total;
+    console.log('Presupuesto actualizado:', this.totalPresupuesto);
   }
 }

@@ -6,7 +6,22 @@
   #paginas, #idiomas {
     font-family: 'Poppins';
   }
-
+  .btn-info {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .btn-info i {
+    color: #333; 
+    font-size: 18px;
+  }
+  
+  .btn-info:hover i {
+    color: rgb(7, 177, 163);
+  }
+  
   .input-small {
     width: 50px;
     font-size: 14px;

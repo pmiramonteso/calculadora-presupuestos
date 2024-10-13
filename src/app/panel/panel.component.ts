@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [ReactiveFormsModule, ModalComponent, CommonModule,],
+  imports: [ReactiveFormsModule, ModalComponent, CommonModule],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss'
 })
@@ -14,7 +15,9 @@ export class PanelComponent {
   @Output() totalWebCost = new EventEmitter<number>();
 
   form: FormGroup;
-
+  modalTitle: string = '';
+  modalBody: string = '';
+  
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       numeroDePaginas: [0],
@@ -26,7 +29,10 @@ export class PanelComponent {
       this.totalWebCost.emit(total);
     });
   }
-
+  setModalContent(title: string, body: string) {
+    this.modalTitle = title;
+    this.modalBody = body;
+  }
   incrementoPaginas() {
     this.form.patchValue({
       numeroDePaginas: this.form.value.numeroDePaginas + 1
