@@ -1,31 +1,44 @@
-.panel {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  .form {
+    display: flex;
+    justify-content: end;
   }
-  
-  .panel h3 {
-    margin-bottom: 20px;
-    font-family: 'Montserrat';
-    color: rgb(3, 116, 106);
-  }
-  #paginas {
+ 
+  #paginas, #idiomas {
     font-family: 'Poppins';
   }
 
-  #idiomas {
-    font-family: 'Poppins';
+  .input-small {
+    width: 50px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+    transition: border-color 0.3s; 
   }
 
-  #costo-adicional {
-    font-family: 'Montserrat';
-    color: rgb(3, 116, 106);
+  .input-small:focus {
+    outline: none;
+    border-color: rgb(7, 177, 163);
   }
+
   .panel div {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
-  .panel button {
-    margin: 0 10px;
-  }
+  .botones {
+  margin: 0 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.botones:hover {
+  border-color: rgb(7, 177, 163);
+}
+.botones:focus {
+  outline: none;
+}

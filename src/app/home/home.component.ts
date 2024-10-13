@@ -15,17 +15,14 @@ export class HomeComponent {
   total: number = 0;
   webCost: number = 0;
 
-  precios = {
-    seo: 300,
-    ads: 400,
-    web: 500
-};
 constructor(private fb: FormBuilder, private budgetService: BudgetService) {
 
   this.form = this.fb.group({
     seo: [false], 
     ads: [false], 
-    web: [false] 
+    web: [false],
+    numeroDePaginas: [0],
+    numeroDeIdiomas: [0]
   });
 
   this.form.valueChanges.subscribe(values => {
@@ -34,16 +31,14 @@ constructor(private fb: FormBuilder, private budgetService: BudgetService) {
 }
 
 calcularTotal(values: any) {
-  this.total = 0;
-  if (values.seo) {
-      this.total += this.precios.seo;
-  }
-  if (values.ads) {
-      this.total += this.precios.ads;
-  }
-  if (values.web) {
-      this.total += this.precios.web + (this.webCost ?? 0);
-  }
+  this.total = this.budgetService.calcularTotal(
+    values.seo,
+    values.ads,
+    values.web,
+    values.numeroDePaginas,
+    values.numeroDeIdiomas,
+    this.webCost
+  );
   this.budgetService.actualizarPresupuesto(this.total);
 }
 

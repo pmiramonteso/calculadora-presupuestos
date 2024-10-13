@@ -1,23 +1,23 @@
-<form [formGroup]="form">
-<div class="panel">
-  <h3>Personaliza tu página</h3>
+<form [formGroup]="form" class="form">
+  <div class="panel mt-2">
+    <div id="paginas" class="mb-3">
+      <label for="pagina">Número de páginas:</label>
+      <button type="button" class="btn btn-info ms-2" data-bs-toggle="modal" data-bs-target="#modalPaginas">
+        <i class="bi bi-info-circle"></i>
+      </button>
+      <button (click)="decrementoPaginas()" class="botones">-</button>
+      <input type="number" id="pagina" class="input-small" formControlName="numeroDePaginas" />
+      <button (click)="incrementoPaginas()" class="botones">+</button>
+    </div>
 
-  <div id="paginas">
-    <label for="paginas">Número de páginas:</label>
-    <button (click)="decrementoPaginas()">-</button>
-    <input type="number" id="paginas" formControlName="numeroDePaginas" />
-    <button (click)="incrementoPaginas()">+</button>
+    <div id="idiomas">
+      <label for="idioma">Número de idiomas:</label>
+      <button type="button" class="btn btn-info ms-2" data-bs-toggle="modal" data-bs-target="#modalIdiomas">
+        <i class="bi bi-info-circle"></i>
+      </button>
+      <button (click)="decrementoIdiomas()" class="botones">-</button>
+      <input type="number" id="idioma" class="input-small" formControlName="numeroDeIdiomas" />
+      <button (click)="incrementoIdiomas()" class="botones">+</button>
+    </div>
   </div>
-
-  <div id="idiomas">
-    <label for="idiomas">Número de idiomas:</label>
-    <button (click)="decrementoIdiomas()">-</button>
-    <input type="number" id="idiomas" formControlName="numeroDeIdiomas" />
-    <button (click)="incrementoIdiomas()">+</button>
-  </div>
-
-  <div id="costo-adicional">
-    <h4>Costo adicional: {{ (form.get('numeroDePaginas')?.value * 30) + (form.get('numeroDeIdiomas')?.value * 30) }} €</h4>
-  </div>
-</div>
 </form>

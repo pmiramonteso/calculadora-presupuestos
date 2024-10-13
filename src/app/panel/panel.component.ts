@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { BudgetService } from '../service/budget.service';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [ReactiveFormsModule, ModalComponent],
+  imports: [ReactiveFormsModule, ModalComponent, CommonModule,],
   templateUrl: './panel.component.html',
   styleUrl: './panel.component.scss'
 })
@@ -15,16 +15,15 @@ export class PanelComponent {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private budgetService: BudgetService) {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       numeroDePaginas: [0],
       numeroDeIdiomas: [0]
     });
 
     this.form.valueChanges.subscribe(values => {
-      const total = this.budgetService.calcularTotal(values.numeroDePaginas, values.numeroDeIdiomas);
+      const total = (values.numeroDePaginas * 30) + (values.numeroDeIdiomas * 30);
       this.totalWebCost.emit(total);
-      this.budgetService.actualizarPresupuesto(total);
     });
   }
 

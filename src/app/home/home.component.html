@@ -1,66 +1,70 @@
 <header class="container-logo">
-    <div class="row">
-        <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo"/>
-    </div>
-  </header>
-  
-  
-  <div class="container-imagen">
-      <img class="fondo-home" src="assets/img/fondo-home.png" alt="fondo-home">
-      <h2>ACONSEGUEIX LA MILLOR QUALITAT</h2>
+  <div class="row">
+    <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo" />
   </div>
-  
-  <div class="container-form">
-    <form [formGroup]="form">
+</header>
 
-        <div class="card service-SEO">
-          <div class="card-body">
-            <div class="service-info">
-              <h5 class="card-title">SEO</h5>
-              <h6 class="card-subtitle">Publicidad SEO</h6>
-            </div>
-            <div class="precio">300 €</div>
-            <div class="service-checkbox">
-              <input type="checkbox" formControlName="seo" />
-            </div>
-          </div>
+<div class="container-imagen">
+  <img class="fondo-home" src="assets/img/fondo-home.png" alt="fondo-home" />
+  <h2>ACONSEGUEIX LA MILLOR QUALITAT</h2>
+</div>
+
+<div class="container-form">
+  <form [formGroup]="form">
+    <div class="card service-SEO">
+      <div class="card-body row align-items-center">
+        <div class="service-info col-6">
+          <h5 class="card-title">SEO</h5>
+          <h6 class="card-subtitle">Publicidad SEO</h6>
         </div>
-  
-        <div class="card service-ADS">
-          <div class="card-body">
-            <div class="service-info">
-              <h5 class="card-title">ADS</h5>
-              <h6 class="card-subtitle">Programación de publicidad ADS</h6>
-            </div>
-            <div class="precio">400 €</div>
-            <div class="service-checkbox">
-              <input type="checkbox" formControlName="ads" />
-            </div>
-          </div>
+        <div class="precio col-3 text-center">
+          <p>300 €</p>
         </div>
-  
-        <div class="card service-WEB">
-          <div class="card-body">
-            <div class="service-info">
-              <h5 class="card-title">WEB</h5>
-              <h6 class="card-subtitle">Programación de una web responsiva completa</h6>
-            </div>
-            <div class="precio">500 €</div>
-            <div class="service-checkbox">
-              <input type="checkbox" formControlName="web"/>
-            </div>
-            <div>
-              @if (form.get("web")?.value) {
-                <app-panel (totalWebCost)="onWebCostChange($event)"></app-panel>
-              }
-            </div>
-          </div>
+        <div class="service-checkbox col-3 text-end">
+          <input type="checkbox" formControlName="seo" />
         </div>
-    </form>
-  
-    <div class="total">
-      <h3>Presupuesto: {{ total }} €</h3>
+      </div>
     </div>
+
+    <div class="card service-ADS">
+      <div class="card-body row align-items-center">
+        <div class="service-info col-6">
+          <h5 class="card-title">ADS</h5>
+          <h6 class="card-subtitle">Programación de publicidad ADS</h6>
+        </div>
+        <div class="precio col-3 text-center">
+          <p>400 €</p>
+        </div>
+        <div class="service-checkbox col-3 text-end">
+          <input type="checkbox" formControlName="ads" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card service-WEB">
+      <div class="card-body row align-items-center">
+        <div class="service-info col-6">
+          <h5 class="card-title">WEB</h5>
+          <h6 class="card-subtitle">
+            Programación de una web responsiva completa
+          </h6>
+        </div>
+        <div class="precio col-3 text-center">
+          <p>500 €</p>
+        </div>
+        <div class="service-checkbox col-3 text-end">
+          <input type="checkbox" formControlName="web" />
+        </div>
+        <div class="panel">
+          @if (form.get("web")?.value) {
+          <app-panel (totalWebCost)="onWebCostChange($event)"></app-panel>
+          }
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="total">
+    <h3>Presupuesto: {{ total }} €</h3>
   </div>
-  
-  
+</div>
