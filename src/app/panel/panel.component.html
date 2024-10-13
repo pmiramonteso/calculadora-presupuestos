@@ -1,5 +1,17 @@
 <form [formGroup]="form" class="form">
   <div class="panel mt-2">
+    <div>
+      <label for="clientName">Nombre del Cliente:</label>
+      <input type="text" id="clientName" formControlName="clientName" />
+    </div>
+    <div>
+      <label for="clientPhone">Teléfono:</label>
+      <input type="tel" id="clientPhone" formControlName="clientPhone" />
+    </div>
+    <div>
+      <label for="clientEmail">Email:</label>
+      <input type="email" id="clientEmail" formControlName="clientEmail" />
+    </div>
     <div id="paginas" class="mb-3">
       <button type="button" class="btn btn-info ms-2" data-bs-toggle="modal" data-bs-target="#dynamicModal" 
       (click)="setModalContent('Número de páginas', 'Añade las páginas que tendrá tu proyecto. Cada página cuesta 30€.')">
@@ -21,6 +33,7 @@
       <input type="number" id="idioma" class="input-small" formControlName="numeroDeIdiomas" />
       <button (click)="incrementoIdiomas()" class="botones">+</button>
     </div>
+    <button type="button" (click)="addBudget()">Añadir Presupuesto</button>
   </div>
 </form>
 <app-modal [title]="modalTitle" [body]="modalBody"></app-modal>

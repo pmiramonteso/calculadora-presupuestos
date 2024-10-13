@@ -1,0 +1,28 @@
+<table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Servicio</th>
+        <th>Total</th>
+        <th>Número de Páginas</th>
+        <th>Número de Idiomas</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for(presupuesto of presupuestos; track presupuesto.clientName) {
+          <tr>
+            <td>{{ presupuesto.clientName }}</td>
+            <td>{{ presupuesto.clientPhone }}</td>
+            <td>{{ presupuesto.clientEmail }}</td>
+            <td>{{ presupuesto.service }}</td>
+            <td>{{ presupuesto.totalCost }} €</td>
+            <td>{{ presupuesto.numeroDePaginas }}</td>
+            <td>{{ presupuesto.numeroDeIdiomas }}</td>
+          </tr>
+        }
+      </tbody>
+      
+  </table>
+  
