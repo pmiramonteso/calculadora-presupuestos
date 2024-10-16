@@ -12,7 +12,7 @@ import { BudgetListComponent } from '../budget-list/budget-list.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent{
   form: FormGroup;
   total: number = 0;
   webCost: number = 0;
@@ -47,4 +47,5 @@ export class HomeComponent {
     this.webCost = cost;
     this.calcularTotal(this.form.value);
   }
+
 }

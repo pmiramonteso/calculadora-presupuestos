@@ -1,0 +1,49 @@
+.card {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+
+.card-title {
+font-size: 30px;
+font-family: 'Montserrat';
+font-weight: bold;
+color: rgb(218, 126, 198); 
+text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
+}
+
+input {
+    padding: 5px;
+    border-radius: 10px;
+    border-color: rgb(197, 193, 193);
+    font-family: 'Poppins';
+    width: 100%;
+}
+.btn-solicita {
+    padding: 5px;
+    display: inline-block;
+    background-color: rgb(7, 177, 163);
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.row {
+    margin: 0;
+}

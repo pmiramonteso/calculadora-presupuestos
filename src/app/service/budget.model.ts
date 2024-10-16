@@ -1,9 +1,10 @@
 export interface Budget {
-    clientName: string;
-    clientPhone: string;
-    clientEmail: string;
-    service: string; 
+    NombreCliente: string;
+    Telefono: string;
+    Email: string;
     totalCost: number;
+    servicios: string[];
     numeroDePaginas: number;
     numeroDeIdiomas: number;
+    service?: string;
   }

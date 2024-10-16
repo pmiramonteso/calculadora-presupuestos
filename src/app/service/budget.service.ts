@@ -27,15 +27,12 @@ export class BudgetService {
 
   addBudget(budget: Budget): void {
     const currentBudgets = this._presupuestos();
-
-    const updatedBudgets = [...currentBudgets, budget];
-
-    this._presupuestos.set(updatedBudgets);
-    
-    console.log('Presupuesto añadido:', budget);
+    currentBudgets.push(budget);
+    this._presupuestos.set(currentBudgets);
+    console.log('Presupuesto añadido:', currentBudgets);
   }
 
   getBudgets() {
-    return this._presupuestos;
+    return this._presupuestos();
   }
 }

@@ -1,28 +1,48 @@
-<table>
-    <thead>
-      <tr>
-        <th>Cliente</th>
-        <th>Teléfono</th>
-        <th>Email</th>
-        <th>Servicio</th>
-        <th>Total</th>
-        <th>Número de Páginas</th>
-        <th>Número de Idiomas</th>
-      </tr>
-    </thead>
-    <tbody>
-        @for(presupuesto of presupuestos; track presupuesto.clientName) {
-          <tr>
-            <td>{{ presupuesto.clientName }}</td>
-            <td>{{ presupuesto.clientPhone }}</td>
-            <td>{{ presupuesto.clientEmail }}</td>
-            <td>{{ presupuesto.service }}</td>
-            <td>{{ presupuesto.totalCost }} €</td>
-            <td>{{ presupuesto.numeroDePaginas }}</td>
-            <td>{{ presupuesto.numeroDeIdiomas }}</td>
-          </tr>
-        }
-      </tbody>
-      
-  </table>
+<form [formGroup]="form">
+  <div class="container">
+  <div class="card mt-5">
+  <div class="card-body">
+    <div class="row align-items-center justify-content-center">
+    <h3 class="card-title mb-4">Pedir presupuesto</h3>
+      <div class="col-4">
+    <input type="text" id="NombreCliente" placeholder="Nombre del Cliente" formControlName="NombreCliente" />
+  </div>
+  <div class="col-3">
+    <input type="tel" id="Telefono" placeholder="Teléfono" formControlName="Telefono" />
+  </div>
+  <div class="col-3">
+    <input type="email" id="Email" placeholder="Email" formControlName="Email" />
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn-solicita" (click)="solicitarPresupuesto()">Solicitar</button>
+  </div>
+</div>
+@for(budget of budgetService.getBudgets(); track budget.NombreCliente) {
+  <div>
+    <h5>{{ budget.NombreCliente }} - {{ budget.totalCost }} €</h5>
+    <p>Teléfono: {{ budget.Telefono }}</p>
+    <p>Email: {{ budget.Email }}</p>
+    <p>Servicios: {{ budget.servicios.join(', ') }}</p>
+    <p>Páginas: {{ budget.numeroDePaginas }}</p>
+    <p>Idiomas: {{ budget.numeroDeIdiomas }}</p>
+  </div>
+}
+</div>
+</div>
+</div>
+</form>
+
+
+  
+<!-- <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+      <th>Servicio</th>
+      <th>Total</th>
+      <th>Número de Páginas</th>
+      <th>Número de Idiomas</th>
+    </tr>
+  </thead> -->
   
