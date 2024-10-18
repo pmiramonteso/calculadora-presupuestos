@@ -1,4 +1,4 @@
-import { Component, effect, Input } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BudgetService } from '../service/budget.service';
 import { Budget } from '../service/budget.model';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 })
 export class BudgetListComponent {
   form: FormGroup;
+  presupuestos = signal<Budget[]>([]);
+  totalWebCost = 0;
 
   constructor(private fb: FormBuilder, public budgetService: BudgetService) {
 
@@ -21,38 +23,39 @@ export class BudgetListComponent {
       Email: ['', [Validators.required, Validators.email]],
       total: [0] 
     });
-
-    this.form.get('total')?.setValue(this.budgetService.getBudgets().length > 0 ? this.budgetService.getBudgets()[this.budgetService.getBudgets().length - 1].totalCost : 0);
   }
-
+  
   solicitarPresupuesto() {
     if (this.form.valid) {
+      this.budgetService.seo = this.form.value.seo;
+      this.budgetService.ads = this.form.value.ads;
+      this.budgetService.web = this.form.value.web; 
+      this.budgetService.numeroDePaginas = this.form.value.numeroDePaginas || 0; 
+      this.budgetService.numeroDeIdiomas = this.form.value.numeroDeIdiomas || 0; 
+      this.budgetService.webCost = this.form.value.total;
+
+      const totalCost = this.budgetService.calcularTotal(
+        this.budgetService.seo,
+        this.budgetService.ads, 
+        this.budgetService.web, 
+        this.budgetService.numeroDePaginas, 
+        this.budgetService.numeroDeIdiomas, 
+        this.totalWebCost);
+      this.form.get('total')?.setValue(totalCost);
+
       const budget: Budget = {
         NombreCliente: this.form.value.NombreCliente,
         Telefono: this.form.value.Telefono,
         Email: this.form.value.Email,
         totalCost: this.form.value.total,
-        servicios: [],
-        numeroDePaginas: this.form.value.numeroDePaginas || 0,
-        numeroDeIdiomas: this.form.value.numeroDeIdiomas || 0,
+        servicios: [this.budgetService.seo, this.budgetService.ads, this.budgetService.web],
+        numeroDePaginas: this.budgetService.numeroDePaginas,
+        numeroDeIdiomas: this.budgetService.numeroDeIdiomas,
       };
- 
-      if (this.budgetService.getBudgets().length > 0) {
-        const lastBudget = this.budgetService.getBudgets()[this.budgetService.getBudgets().length - 1];
-        budget.servicios = lastBudget.servicios;
-        budget.numeroDePaginas = lastBudget.numeroDePaginas;
-        budget.numeroDeIdiomas = lastBudget.numeroDeIdiomas; 
-      }
   
       this.budgetService.addBudget(budget);
       this.form.reset();
     }
-  }
-
-  ngOnInit() {
-    effect(() => {
-      console.log(this.budgetService.getBudgets());
-    });
   }
 }
 

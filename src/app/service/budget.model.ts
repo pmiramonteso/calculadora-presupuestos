@@ -3,8 +3,7 @@ export interface Budget {
     Telefono: string;
     Email: string;
     totalCost: number;
-    servicios: string[];
+    servicios: boolean[];
     numeroDePaginas: number;
     numeroDeIdiomas: number;
-    service?: string;
   }
