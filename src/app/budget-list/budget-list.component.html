@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form [formGroup]="form" (ngSubmit)="solicitarPresupuesto()">
+  <form [formGroup]="form">
     <div class="card mt-5">
       <div class="card-body">
         <div class="row align-items-center justify-content-center">
@@ -30,7 +30,7 @@
             />
           </div>
           <div class="col-2">
-            <button type="submit" class="btn-solicita">Solicitar</button>
+            <button type="submit" class="btn-solicita" (click)="solicitarPresupuesto()">Solicitar</button>
           </div>
         </div>
       </div>
@@ -38,10 +38,8 @@
   </form>
 
   <h3>Presupuestos en curso</h3>
-  <input type="search">
-  <i class="fa fa-search busca" id="lupa"></i>
 
-  @for(budget of budgetService.getBudgets()(); track budget.NombreCliente) {
+  @for(budget of budgetService.getBudget(); track budget.NombreCliente) {
   <div class="card mt-5">
     <div class="card-body">
       <div class="presupuesto row">
@@ -54,16 +52,22 @@
         <div class="datos-servicio col-3">
           <p class="servicios">
             Servicios:
-            {{ budget.servicios[0] ? "SEO" : "" }}
-            {{ budget.servicios[1] ? "ADS" : "" }}
-            {{ budget.servicios[2] ? "Web" : "" }}
+            @if(budget.servicios.web){
+              <li> Web ({{budget.numeroDePaginas}} páginas, {{budget.numeroDeIdiomas}} Idiomas)</li>
+              }
+              @if(budget.servicios.ads){
+              <li> Email</li>
+              }
+              @if(budget.servicios.seo){
+              <li> SEO</li>
+              }
           </p>
           <p class="paginas">Páginas: {{ budget.numeroDePaginas }}</p>
           <p class="idiomas">Idiomas: {{ budget.numeroDeIdiomas }}</p>
         </div>
 
         <div class="total col-4">
-          <h3>{{ totalWebCost }} €</h3>
+          <h3>{{ budget.totalCost }} €</h3>
         </div>
       </div>
     </div>

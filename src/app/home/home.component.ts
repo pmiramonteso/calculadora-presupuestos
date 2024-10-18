@@ -16,6 +16,8 @@ export class HomeComponent{
   form: FormGroup;
   total: number = 0;
   webCost: number = 0;
+  numeroDePaginas: number = 0;
+  numeroDeIdiomas: number = 0;
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.form = this.fb.group({

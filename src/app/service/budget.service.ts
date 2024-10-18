@@ -5,16 +5,8 @@ import { Budget } from '../service/budget.model';
   providedIn: 'root'
 })
 export class BudgetService {
-  public totalWebCostSignal = signal<number>(0);
-  private totalPresupuesto: number = 0;
+  public totalPresupuesto: number = 0;
   public _presupuestos = signal<Budget[]>([]);
-
-  seo: boolean = false;
-  ads: boolean = false;
-  web: boolean = false;
-  numeroDePaginas: number = 0;
-  numeroDeIdiomas: number = 0;
-  webCost: number = 0;
 
   calcularTotal(seo: boolean, ads: boolean, web: boolean, numeroDePaginas: number, numeroDeIdiomas: number, webCost: number = 0): number {
     let total = 0;
@@ -33,18 +25,13 @@ export class BudgetService {
     //console.log('Presupuesto actualizado:', this.totalPresupuesto);
   }
 
-  addBudget(budget: Budget): void {
-    const updatedBudgets = [...this._presupuestos(), budget];
-    this._presupuestos.set(updatedBudgets);
- 
+  addBudget(budget:Budget){
+    const currentBudgets = this._presupuestos();
+    this._presupuestos.set([...currentBudgets, budget]);
+    console.log(currentBudgets);
   }
-  getBudgets() {
-    return this._presupuestos.asReadonly();
-  }
-  setTotalWebCost(cost: number): void {
-    this.totalWebCostSignal.set(cost);
-  }
-  getTotalWebCost() {
-    return this.totalWebCostSignal.asReadonly();
+
+  getBudget(){
+    return this._presupuestos()
   }
 }
