@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 300px;
     border-radius: 60px;
     margin: 0 auto;
@@ -22,7 +22,16 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 
+  .fondo-home {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    border-radius: 60px;
+  }
+
   h2 {
+    margin: 0;
     font-size: 50px;
     font-family: 'Montserrat';
     font-weight: bold;
@@ -50,13 +59,6 @@ body {
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.fondo-home {
-  width: 100%;
-  position: absolute;
-  object-fit: cover;
-  border-radius: 60px;
 }
 
 h5 {
@@ -99,8 +101,20 @@ h6 {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .service-info {
   text-align: left;
+  flex-grow: 1;
+}
+.service-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .precio {
@@ -111,15 +125,109 @@ h6 {
 }
 
 .total {
-  margin-top: 20px;   
+  margin-top: 20px;
   display: flex;
   justify-content: end;
 }
 
 .total h3 {
+  margin-top: 20px;
   font-family: 'Montserrat';
   font-weight: bold;
   font-size: 30px;
   color: rgb(7, 177, 163);
   text-shadow: 0 2px 5px rgba(106, 218, 208, 0.2);
+}
+
+.card-title-form {
+font-size: 30px;
+font-family: 'Montserrat';
+font-weight: bold;
+color: rgb(218, 126, 198); 
+text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
+}
+
+input {
+  padding: 5px;
+  border-radius: 10px;
+  border-color: rgb(197, 193, 193);
+  font-family: 'Poppins';
+  width: 100%;
+}
+.btn-solicita {
+  padding: 5px;
+  display: inline-block;
+  background-color: rgb(218, 126, 198);
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat';
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .container-imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 40px;
+    padding: 60px;
+  }
+
+  .container-form {
+    padding: 0 10px;
+  }
+  
+  .card {
+    margin: 20px;
+    padding: 0;
+  }
+
+  .card-body .col-6,
+  .card-body .col-3 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .container-form form {
+    width: 100%;
+  }
+
+  .col-4, .col-3, .col-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-solicita {
+    width: 100%;
+  }
+
+  .card-title-form {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 40px;
+    padding: 60px;
+  }
+  h6 {
+    text-align: center;
+}
+  .card {
+    margin: 10px 0;
+  }
 }

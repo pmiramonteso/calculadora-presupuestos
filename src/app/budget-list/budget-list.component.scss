@@ -1,56 +1,87 @@
+h2 {
+  color:rgb(7, 177, 163)
+}
+
+h3 {
+  color: rgb(218, 126, 198);
+}
+
 .card {
-    padding: 20px;
-    margin: 20px 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: auto;
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
 
 .card-title {
-font-size: 30px;
-font-family: 'Montserrat';
-font-weight: bold;
-color: rgb(218, 126, 198); 
-text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
+  font-size: 30px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  color: rgb(218, 126, 198); 
+  text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
+}
+.input-group {
+  width: auto;
 }
 
-input {
-    padding: 5px;
-    border-radius: 10px;
-    border-color: rgb(197, 193, 193);
-    font-family: 'Poppins';
-    width: 100%;
+.buscar {
+  border-radius: 10px;
+  border: 1px solid rgb(197, 193, 193);
+  padding: 5px;
+  font-family: 'Poppins';
 }
-.btn-solicita {
-    padding: 5px;
-    display: inline-block;
-    background-color: rgb(7, 177, 163);
-    color: white;
-    text-decoration: none;
-    font-family: 'Montserrat';
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 10px;
-    border: none;
-    transition: background-color 0.3s;
-    width: 100%;
+
+.input-group-text {
+  background-color: #fff;
+  border: 1px solid rgb(197, 193, 193);
+  border-radius: 0 10px 10px 0;
+}
+
+.input-group-text .fas {
+  color: rgb(197, 193, 193);
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-text .fas {
+  margin-left: 5px;
+}
+
+.d-flex {
+  justify-content: flex-start;
+}
+
+.ordenar {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.ordenar:hover {
+  color: rgb(7, 177, 163);
+  transition: background-color 0.3s ease;
 }
 
 .row {
-    margin: 0;
+  margin: 0;
 }
 
 .datos-servicio {
-  text-align: center;
+  text-align: start;
 }
- .total {
+
+.total {
   text-align: end;
- }
+}

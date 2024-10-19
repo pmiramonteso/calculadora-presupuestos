@@ -1,4 +1,5 @@
 export interface Budget {
+    id?: string;
     NombreCliente: string;
     Telefono: string;
     Email: string;
@@ -10,4 +11,5 @@ export interface Budget {
   },
     numeroDePaginas: number;
     numeroDeIdiomas: number;
+    fecha: string;
   }

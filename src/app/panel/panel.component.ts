@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { Modal } from 'bootstrap';
 import { CommonModule } from '@angular/common';
-import { BudgetService } from '../service/budget.service';
 
 @Component({
   selector: 'app-panel',
@@ -15,7 +14,9 @@ import { BudgetService } from '../service/budget.service';
 })
 export class PanelComponent {
   @Output() totalWebCost = new EventEmitter<number>();
-  
+  @Output() paginasChange = new EventEmitter<number>();
+  @Output() idiomasChange = new EventEmitter<number>();
+
   form: FormGroup;
   modalTitle: string = '';
   modalBody: string = '';
@@ -27,8 +28,8 @@ export class PanelComponent {
     });
 
     this.form.valueChanges.subscribe(values => {
-      const total = this.calcularTotal(values);
-      this.totalWebCost.emit(total);
+      this.paginasChange.emit(values.numeroDePaginas);
+      this.idiomasChange.emit(values.numeroDeIdiomas);
     });
   }
 

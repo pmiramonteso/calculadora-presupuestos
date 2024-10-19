@@ -1,45 +1,21 @@
-<div class="container">
+@if (cribarPresupuesto().length >= 1) {
+  <div class="container mt-5">
+  <h2>Presupuestos en curso</h2>
+  <div class="d-flex justify-content-between my-3">
 
-  <form [formGroup]="form">
-    <div class="card mt-5">
-      <div class="card-body">
-        <div class="row align-items-center justify-content-center">
-          <h3 class="card-title mb-4">Pedir presupuesto</h3>
-          <div class="col-4">
-            <input
-              type="text"
-              id="NombreCliente"
-              placeholder="Nombre y apellido"
-              formControlName="NombreCliente"
-            />
-          </div>
-          <div class="col-3">
-            <input
-              type="tel"
-              id="Telefono"
-              placeholder="Teléfono"
-              formControlName="Telefono"
-            />
-          </div>
-          <div class="col-3">
-            <input
-              type="email"
-              id="Email"
-              placeholder="Email"
-              formControlName="Email"
-            />
-          </div>
-          <div class="col-2">
-            <button type="submit" class="btn-solicita" (click)="solicitarPresupuesto()">Solicitar</button>
-          </div>
-        </div>
-      </div>
+    <div class="input-group">
+      <input type="text" class="buscar form-control" placeholder="Buscar por nombre" (input)="buscarPresupuestos($event)" />
+      <span class="input-group-text">
+        <i class="fas fa-search"></i>
+      </span>
     </div>
-  </form>
-
-  <h3>Presupuestos en curso</h3>
-
-  @for(budget of budgetService.getBudget(); track budget.NombreCliente) {
+  
+    <button (click)="ordenarPorFecha()" class="btn ordenar">Ordenar por Fecha</button>
+    <button (click)="ordenarPorPrecio()" class="btn ordenar">Ordenar por Precio</button>
+    <button (click)="ordenarPorNombre()" class="btn ordenar">Ordenar Alfabéticamente</button>
+  </div>
+  
+  @for(budget of cribarPresupuesto(); track budget.id) {
   <div class="card mt-5">
     <div class="card-body">
       <div class="presupuesto row">
@@ -56,14 +32,12 @@
               <li> Web ({{budget.numeroDePaginas}} páginas, {{budget.numeroDeIdiomas}} Idiomas)</li>
               }
               @if(budget.servicios.ads){
-              <li> Email</li>
+              <li> ADS</li>
               }
               @if(budget.servicios.seo){
               <li> SEO</li>
               }
           </p>
-          <p class="paginas">Páginas: {{ budget.numeroDePaginas }}</p>
-          <p class="idiomas">Idiomas: {{ budget.numeroDeIdiomas }}</p>
         </div>
 
         <div class="total col-4">
@@ -74,3 +48,4 @@
   </div>
   }
 </div>
+}

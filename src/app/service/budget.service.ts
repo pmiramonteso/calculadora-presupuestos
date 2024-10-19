@@ -7,6 +7,7 @@ import { Budget } from '../service/budget.model';
 export class BudgetService {
   public totalPresupuesto: number = 0;
   public _presupuestos = signal<Budget[]>([]);
+  private presupuestoIdCounter: number = 1;
 
   calcularTotal(seo: boolean, ads: boolean, web: boolean, numeroDePaginas: number, numeroDeIdiomas: number, webCost: number = 0): number {
     let total = 0;
@@ -15,20 +16,21 @@ export class BudgetService {
     if (ads) total += 400;
     if (web) total += 500 + webCost;
 
-    total += (numeroDePaginas * 30) + (numeroDeIdiomas * 30);
+    total += (numeroDePaginas * 30);
+    total += (numeroDeIdiomas * 30);
     
     return total;
   }
 
   actualizarPresupuesto(total: number): void {
     this.totalPresupuesto = total;
-    //console.log('Presupuesto actualizado:', this.totalPresupuesto);
   }
 
   addBudget(budget:Budget){
+    budget.id = (this.presupuestoIdCounter++).toString();
     const currentBudgets = this._presupuestos();
     this._presupuestos.set([...currentBudgets, budget]);
-    console.log(currentBudgets);
+    console.log(this._presupuestos());
   }
 
   getBudget(){

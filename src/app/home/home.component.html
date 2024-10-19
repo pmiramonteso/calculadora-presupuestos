@@ -6,7 +6,7 @@
 
 <div class="container-imagen">
   <img class="fondo-home" src="assets/img/fondo-home.png" alt="fondo-home" />
-  <h2>ACONSEGUEIX LA MILLOR QUALITAT</h2>
+  <h2>CONSIGUE LA MEJOR CALIDAD</h2>
 </div>
 
 <div class="container-form">
@@ -57,7 +57,10 @@
         </div>
         <div class="panel">
           @if (form.get("web")?.value) {
-          <app-panel (totalWebCost)="onWebCostChange($event)"></app-panel>
+          <app-panel (totalWebCost)="onWebCostChange($event)"
+          (paginasChange)="onPaginasChange($event)"
+          (idiomasChange)="onIdiomasChange($event)"
+        ></app-panel>
           }
         </div>
       </div>
@@ -67,6 +70,43 @@
   <div class="total">
     <h3>Presupuesto: {{ total }} €</h3>
   </div>
+  
+  <form [formGroup]="form">
+    <div class="card mt-5">
+      <div class="card-body">
+        <div class="row align-items-center justify-content-center">
+          <h3 class="card-title-form mb-4">Pide presupuesto</h3>
+          <div class="col-4">
+            <input
+              type="text"
+              id="NombreCliente"
+              placeholder="Nombre y apellido"
+              formControlName="NombreCliente"
+            />
+          </div>
+          <div class="col-3">
+            <input
+              type="tel"
+              id="Telefono"
+              placeholder="Teléfono"
+              formControlName="Telefono"
+            />
+          </div>
+          <div class="col-3">
+            <input
+              type="email"
+              id="Email"
+              placeholder="Email"
+              formControlName="Email"
+            />
+          </div>
+          <div class="col-2">
+            <button type="submit" class="btn-solicita" (click)="solicitarPresupuesto()">Solicitar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 
   <app-budget-list></app-budget-list>
 </div>
