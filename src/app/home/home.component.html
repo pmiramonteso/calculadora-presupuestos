@@ -1,7 +1,19 @@
 <header class="container-logo">
-  <div class="row">
-    <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo" />
-  </div>
+  <div class="header-container">
+  <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo" />
+  <div class="menu-hamburguesa" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</div>
+<nav class="navbar" [ngClass]="{'active': menuVisible}">
+    <ul>
+      <li><a href="#">Sobre nosotros</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
 </header>
 
 <div class="container-imagen">
@@ -64,6 +76,11 @@
           }
         </div>
       </div>
+      @if(ErrorCheckbox){
+        <div class="text-danger text-center">
+          <small>Selecciona al menos un servicio</small>
+        </div>
+      }
     </div>
   </form>
 
@@ -83,6 +100,7 @@
               placeholder="Nombre y apellido"
               formControlName="NombreCliente"
             />
+          
           </div>
           <div class="col-3">
             <input
@@ -110,3 +128,22 @@
 
   <app-budget-list></app-budget-list>
 </div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-left">
+      <img class="img-footer" src="assets/img/logo-transparente.png" alt="logo" />
+    </div>
+    <div class="footer-center">
+      <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-right">
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+

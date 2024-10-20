@@ -1,79 +1,134 @@
 body {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(7, 177, 163);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+.menu-hamburguesa {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-hamburguesa span {
+  height: 4px;
+  width: 30px;
+  background: white;
+  margin: 4px;
+  transition: 0.3s;
+}
+
+.navbar {
+  margin: 0;
+  display: flex;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-family: "Montserrat";
+}
+
+.navbar a:hover {
+  color: rgb(218, 126, 198);
 }
 
 .img-logo {
-    width: 5%;
-    display: flex;
-    justify-content: start;
-  }
+  width: 20%;
+  filter: invert(100%);
+}
 
 .container-imagen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300px;
-    border-radius: 60px;
-    margin: 0 auto;
-    margin-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 1000px;
+  height: 250px;
+  aspect-ratio: 16 / 9;
+  border-radius: 60px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-  .fondo-home {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    position: absolute;
-    border-radius: 60px;
-  }
+.fondo-home {
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  border-radius: 60px;
+}
 
-  h2 {
-    margin: 0;
-    font-size: 50px;
-    font-family: 'Montserrat';
-    font-weight: bold;
-    color:rgb(7, 177, 163);
-    text-align: center;
-    position: relative;
-    text-shadow: 0 4px 10px rgba(5, 223, 204, 0.2);
-  }
+h2 {
+  margin: 0;
+  font-size: 50px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: rgb(7, 177, 163);
+  text-align: center;
+  position: relative;
+  text-shadow: 0 4px 10px rgba(5, 223, 204, 0.2);
+}
 
-  h2:hover {
-    color: rgb(218, 126, 198); 
-    text-shadow: 0 4px 15px rgba(255, 255, 255, 0.8);
-  }
+h2:hover {
+  color: rgb(218, 126, 198);
+  text-shadow: 0 4px 15px rgba(255, 255, 255, 0.8);
+}
 
-  h2 {
-    animation: fadeInUp 0.5s ease;
+h2 {
+  animation: fadeInUp 0.5s ease;
 }
 
 @keyframes fadeInUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 h5 {
   font-size: 30px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   color: rgb(7, 177, 163);
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   text-shadow: 0 2px 10px rgba(106, 218, 208, 0.2);
 }
 
 h6 {
   max-width: 250px;
   font-size: 16px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: 400;
   color: rgb(0, 0, 0);
   margin-top: 0;
@@ -101,20 +156,15 @@ h6 {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.card-body {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .service-info {
   text-align: left;
   flex-grow: 1;
 }
+
 .service-checkbox {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-end !important;
 }
 
 .precio {
@@ -132,7 +182,7 @@ h6 {
 
 .total h3 {
   margin-top: 20px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   font-size: 30px;
   color: rgb(7, 177, 163);
@@ -140,27 +190,28 @@ h6 {
 }
 
 .card-title-form {
-font-size: 30px;
-font-family: 'Montserrat';
-font-weight: bold;
-color: rgb(218, 126, 198); 
-text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
+  font-size: 30px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: rgb(218, 126, 198);
+  text-shadow: 0 4px 10px rgba(247, 236, 247, 0.826);
 }
 
 input {
   padding: 5px;
   border-radius: 10px;
   border-color: rgb(197, 193, 193);
-  font-family: 'Poppins';
+  font-family: "Poppins";
   width: 100%;
 }
+
 .btn-solicita {
   padding: 5px;
   display: inline-block;
   background-color: rgb(218, 126, 198);
   color: white;
   text-decoration: none;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 1rem;
   font-weight: bold;
   border-radius: 10px;
@@ -172,13 +223,70 @@ input {
 .row {
   margin: 0;
 }
+
+footer {
+  background-color: rgb(7, 177, 163);;
+  padding: 15px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.img-footer {
+  width: 30%;
+  filter: invert(100%);
+}
+.footer-left {
+  flex: 1;
+}
+
+.footer-center {
+  color: white;
+  text-align: center;
+  flex: 1;
+}
+
+.footer-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 30px;
+  transition: color 0.3s;
+  gap: 20px;
+}
+
+.social-icons a:hover {
+  color: rgb(218, 126, 198);
+}
+
 @media (max-width: 768px) {
-  .container-imagen {
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 20px;
+  .navbar {
+    display: none;
+    flex-direction: column;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+
+  .menu-hamburguesa {
+    display: flex;
+
   }
 
   h2 {
@@ -186,13 +294,24 @@ input {
     padding: 60px;
   }
 
+  .total {
+    justify-content: center;
+  }
+
   .container-form {
     padding: 0 10px;
   }
-  
+
   .card {
     margin: 20px;
     padding: 0;
+  }
+
+  .card.service-SEO,
+  .card.service-ADS,
+  .card.service-WEB {
+    width: 80%;
+    margin: 20px auto;
   }
 
   .card-body .col-6,
@@ -201,11 +320,33 @@ input {
     text-align: center;
   }
 
+  .card-body .service-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-body .service-info h6 {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .card-body .precio {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .card-body .service-checkbox {
+    margin: 0;
+  }
+
   .container-form form {
     width: 100%;
   }
 
-  .col-4, .col-3, .col-2 {
+  .col-4,
+  .col-3,
+  .col-2 {
     width: 100%;
     margin-bottom: 10px;
   }
@@ -217,6 +358,17 @@ input {
   .card-title-form {
     font-size: 24px;
   }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    text-align: center;
+    flex: none;
+  }
+
 }
 
 @media (max-width: 576px) {
@@ -224,9 +376,11 @@ input {
     font-size: 40px;
     padding: 60px;
   }
-  h6 {
+
+  .card-body .service-info h6 {
     text-align: center;
-}
+  }
+  
   .card {
     margin: 10px 0;
   }

@@ -1,14 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalComponent } from '../shared/modal/modal.component';
-import { Modal } from 'bootstrap';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-panel',
   standalone: true,
-  imports: [ReactiveFormsModule, ModalComponent, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss']
 })
@@ -18,8 +17,6 @@ export class PanelComponent {
   @Output() idiomasChange = new EventEmitter<number>();
 
   form: FormGroup;
-  modalTitle: string = '';
-  modalBody: string = '';
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -32,17 +29,6 @@ export class PanelComponent {
       this.idiomasChange.emit(values.numeroDeIdiomas);
     });
   }
-
-  setModalContent(title: string, body: string) {
-    this.modalTitle = title;
-    this.modalBody = body;
-
-      const modalElement = document.getElementById('dynamicModal');
-      if (modalElement) {
-        const modal = new Modal(modalElement);
-        modal.show();
-      }
-    };
 
   calcularTotal(values: any): number {
     return (values.numeroDePaginas * 30) + (values.numeroDeIdiomas * 30);
@@ -76,3 +62,4 @@ export class PanelComponent {
     }
   }
 }
+

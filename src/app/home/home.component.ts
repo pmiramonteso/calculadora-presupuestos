@@ -4,15 +4,17 @@ import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../service/budget.service';
 import { Budget } from '../service/budget.model';
 import { BudgetListComponent } from '../budget-list/budget-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, PanelComponent, BudgetListComponent],
+  imports: [ReactiveFormsModule, PanelComponent, BudgetListComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent{
+  menuVisible = false;
   form: FormGroup;
   total: number = 0;
   webCost: number = 0;
@@ -25,13 +27,19 @@ export class HomeComponent{
       seo: [false], 
       ads: [false], 
       web: [false],
-      NombreCliente: ['', Validators.required],
-      Telefono:['', Validators.required],
+      NombreCliente: ['', [Validators.required, Validators.minLength(3)]],
+      Telefono:['' , [Validators.required, Validators.pattern('^[0-9]{9,10}$')]],
       Email:['', [Validators.required, Validators.email]],
     });
 
+    this.form.valueChanges.subscribe(values => {
+      this.calcularTotal(values);
+    });
   }
 
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
   onPaginasChange(paginas: number) {
     this.numeroDePaginas = paginas;
     this.calcularTotal(this.form.value);
@@ -58,6 +66,8 @@ export class HomeComponent{
     this.webCost = cost;
     this.calcularTotal(this.form.value);
   }
+
+
 
   solicitarPresupuesto() {
     const { NombreCliente, Telefono, Email } = this.form.value;

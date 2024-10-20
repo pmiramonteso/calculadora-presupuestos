@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { PanelComponent } from './panel.component';
-import { ModalComponent } from '../shared/modal/modal.component';
 
 describe('PanelComponent', () => {
   let component: PanelComponent;
@@ -10,7 +9,7 @@ describe('PanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, PanelComponent, ModalComponent]
+      imports: [ReactiveFormsModule, PanelComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PanelComponent);
@@ -64,14 +63,6 @@ describe('PanelComponent', () => {
     spyOn(component.totalWebCost, 'emit');
     component.form.patchValue({ numeroDePaginas: 1, numeroDeIdiomas: 1 });
     expect(component.totalWebCost.emit).toHaveBeenCalledWith(60);
-  });
-
-  it('should set modal content correctly', () => {
-    const title = 'Número de páginas';
-    const body = 'Añade las páginas que tendrá tu proyecto. Cada página cuesta 30€.';
-    component.setModalContent(title, body);
-    expect(component.modalTitle).toBe(title);
-    expect(component.modalBody).toBe(body);
   });
 
   it('should increment number of pages when increment button is clicked', () => {

@@ -57,3 +57,12 @@
 .botones:focus {
   outline: none;
 }
+@media (max-width: 768px) {
+  i, label {
+    display: flex;
+    flex-direction: column;
+  }
+  button, input {
+    align-items: end;
+  }
+}
