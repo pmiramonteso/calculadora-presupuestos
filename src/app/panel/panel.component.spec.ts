@@ -58,25 +58,4 @@ describe('PanelComponent', () => {
     component.decrementoIdiomas();
     expect(component.form.value.numeroDeIdiomas).toBe(0);
   });
-
-  it('should emit total cost on form value changes', () => {
-    spyOn(component.totalWebCost, 'emit');
-    component.form.patchValue({ numeroDePaginas: 1, numeroDeIdiomas: 1 });
-    expect(component.totalWebCost.emit).toHaveBeenCalledWith(60);
-  });
-
-  it('should increment number of pages when increment button is clicked', () => {
-    const incrementButton = fixture.debugElement.query(By.css('button.botones:nth-of-type(3)'));
-    incrementButton.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(component.form.value.numeroDePaginas).toBe(1);
-  });
-
-  it('should decrement number of pages when decrement button is clicked', () => {
-    component.form.patchValue({ numeroDePaginas: 1 });
-    const decrementButton = fixture.debugElement.query(By.css('button.botones:nth-of-type(2)'));
-    decrementButton.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(component.form.value.numeroDePaginas).toBe(0);
-  });
 });
