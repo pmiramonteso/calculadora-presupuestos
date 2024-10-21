@@ -1,7 +1,7 @@
-Web calculadora de presupuestos
+Calculadora de presupuestos
 
 📄 Descripción
-
+Aplicación web interactiva que permite a los usuarios calcular el costo total de servicios. Está diseñada para facilitar el proceso de estimación de costos, proporcionando una interfaz intuitiva y fácil de usar. Los usuarios pueden seleccionar un servicio y en "web" tienen la opción de ingresar el número de páginas y el número de idiomas.
 
 💻 Tecnologías Utilizadas
 
@@ -10,6 +10,7 @@ TypeScript
 SASS
 Bootstrap
 Node.js para gestionar las dependencias
+Testing: Jasmine, Karma
 
 📋 Requisitos
 
@@ -21,7 +22,9 @@ npm (v6 o superior)
 Para instalar el proyecto en un entorno local, sigue estos pasos:
 
 Clona el repositorio:
+
 git clone https://github.com/pmiramonteso/sprint-6.git
+
 Navega al directorio del proyecto: cd sprint-6
 
 Instala las dependencias de Node.js: npm install
