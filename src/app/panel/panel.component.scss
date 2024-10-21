@@ -1,11 +1,9 @@
-  .form {
+   #paginas, #idiomas {
+    font-family: 'Poppins';
     display: flex;
     justify-content: end;
   }
- 
-  #paginas, #idiomas {
-    font-family: 'Poppins';
-  }
+
   .btn-info {
     background-color: transparent;
     border: none;
@@ -58,11 +56,9 @@
   outline: none;
 }
 @media (max-width: 768px) {
-  i, label {
+
+  #paginas, #idiomas {
     display: flex;
-    flex-direction: column;
-  }
-  button, input {
-    align-items: end;
+    justify-content: center;
   }
 }

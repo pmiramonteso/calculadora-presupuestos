@@ -1,25 +1,48 @@
 <header class="container-logo">
   <div class="header-container">
-  <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo" />
-  <div class="menu-hamburguesa" (click)="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-</div>
-<nav class="navbar" [ngClass]="{'active': menuVisible}">
+    <img class="img-logo" src="assets/img/logo-transparente.png" alt="logo" />
+    <div class="menu-hamburguesa" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="navbar" [ngClass]="{ active: menuVisible }">
     <ul>
       <li><a href="#">Sobre nosotros</a></li>
       <li><a href="#">Servicios</a></li>
       <li><a href="#">Contacto</a></li>
     </ul>
   </nav>
+
+  @if (menuVisible) {
+  <div class="modal">
+    <div class="modal-content">
+      <img class="img-logo-modal" src="assets/img/logo-transparente.png" alt="logo" />
+      <ul class="modal-menu">
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+      <div class="button-container">
+      <button class="close-button" (click)="toggleMenu()">Cerrar</button>
+    </div>
+    </div>
+  </div>
+}
 </header>
 
 <div class="container-imagen">
   <img class="fondo-home" src="assets/img/fondo-home.png" alt="fondo-home" />
   <h2>CONSIGUE LA MEJOR CALIDAD</h2>
 </div>
+
+@if(ErrorCheckbox){
+  <div class="alert error-banner text-center">
+    <i class="fas fa-exclamation-triangle"></i> <br>
+    <span>Selecciona al menos un servicio</span>
+  </div>
+  }
 
 <div class="container-form">
   <form [formGroup]="form">
@@ -69,25 +92,21 @@
         </div>
         <div class="panel">
           @if (form.get("web")?.value) {
-          <app-panel (totalWebCost)="onWebCostChange($event)"
-          (paginasChange)="onPaginasChange($event)"
-          (idiomasChange)="onIdiomasChange($event)"
-        ></app-panel>
+          <app-panel
+            (totalWebCost)="onWebCostChange($event)"
+            (paginasChange)="onPaginasChange($event)"
+            (idiomasChange)="onIdiomasChange($event)"
+          ></app-panel>
           }
         </div>
       </div>
-      @if(ErrorCheckbox){
-        <div class="text-danger text-center">
-          <small>Selecciona al menos un servicio</small>
-        </div>
-      }
     </div>
   </form>
 
   <div class="total">
     <h3>Presupuesto: {{ total }} €</h3>
   </div>
-  
+
   <form [formGroup]="form">
     <div class="card mt-5">
       <div class="card-body">
@@ -99,16 +118,24 @@
               id="NombreCliente"
               placeholder="Nombre y apellido"
               formControlName="NombreCliente"
-            />
-          
+              [ngClass]="{ 'is-invalid': form.get('NombreCliente')?.invalid && form.get('NombreCliente')?.touched }"
+              />
+              @if (form.get('NombreCliente')?.invalid && form.get('NombreCliente')?.touched) {
+                <small class="error">Introduce un nombre</small>
+              }  
           </div>
+
           <div class="col-3">
             <input
               type="tel"
               id="Telefono"
               placeholder="Teléfono"
               formControlName="Telefono"
+              [ngClass]="{ 'is-invalid': form.get('Telefono')?.invalid && form.get('Telefono')?.touched }"
             />
+            @if (form.get('Telefono')?.invalid && form.get('Telefono')?.touched) {
+              <small class="error">Introduce un teléfono válido</small>
+            }
           </div>
           <div class="col-3">
             <input
@@ -116,10 +143,26 @@
               id="Email"
               placeholder="Email"
               formControlName="Email"
-            />
+              [ngClass]="{ 'is-invalid': form.get('Email')?.invalid && form.get('Email')?.touched }"
+              />
+              @if (form.get('Email')?.invalid && form.get('Email')?.touched) {
+                @if(form.get('Email')?.errors?.['required']) {
+                  <small class="error" class="error">Introduce un email</small>
+                }
+                @if(form.get('Email')?.errors?.['email']) {
+                  <small class="error" class="error">Introduce un email válido</small>
+                }
+              }
+  
           </div>
           <div class="col-2">
-            <button type="submit" class="btn-solicita" (click)="solicitarPresupuesto()">Solicitar</button>
+            <button
+              type="submit"
+              class="btn-solicita"
+              [disabled]="form.invalid" [ngClass]="{'disabled-button': form.invalid}"
+              (click)="solicitarPresupuesto()"
+            >Solicitar
+            </button>
           </div>
         </div>
       </div>
@@ -132,10 +175,14 @@
 <footer>
   <div class="footer-content">
     <div class="footer-left">
-      <img class="img-footer" src="assets/img/logo-transparente.png" alt="logo" />
+      <img
+        class="img-footer"
+        src="assets/img/logo-transparente.png"
+        alt="logo"
+      />
     </div>
     <div class="footer-center">
-      <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+      <p class="empresa">&copy; 2024 Mountain. Todos los derechos reservados.</p>
     </div>
     <div class="footer-right">
       <div class="social-icons">
@@ -146,4 +193,3 @@
     </div>
   </div>
 </footer>
-

@@ -60,10 +60,6 @@ h3 {
   align-items: center;
 }
 
-.input-group-text .fas {
-  margin-left: 5px;
-}
-
 .ordenar {
   border: none;
   white-space: nowrap;
@@ -99,12 +95,24 @@ h3 {
 .total {
   text-align: end;
 }
+
 @media (max-width: 992px) {
   .input-group {
     margin-bottom: 10px;
   }
+}
 
-  .busqueda {
-    flex-direction: column;
-  }
+@media (max-width: 768px) {
+ h2 {
+  display: flex;
+  justify-content: center;
+ }
+ .input-group {
+  margin-top:10px;
+  margin-left: 0;
+}
+ .filtros {
+  display: flex;
+  justify-content: center;
+}
 }

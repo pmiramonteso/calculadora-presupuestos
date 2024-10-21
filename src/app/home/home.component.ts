@@ -27,9 +27,9 @@ export class HomeComponent{
       seo: [false], 
       ads: [false], 
       web: [false],
-      NombreCliente: ['', [Validators.required, Validators.minLength(3)]],
-      Telefono:['' , [Validators.required, Validators.pattern('^[0-9]{9,10}$')]],
-      Email:['', [Validators.required, Validators.email]],
+      NombreCliente: ['', Validators.required],
+      Telefono:['', Validators.required],
+      Email:['',[Validators.required, Validators.email]],
     });
 
     this.form.valueChanges.subscribe(values => {
@@ -67,8 +67,6 @@ export class HomeComponent{
     this.calcularTotal(this.form.value);
   }
 
-
-
   solicitarPresupuesto() {
     const { NombreCliente, Telefono, Email } = this.form.value;
     const seo = this.form.get('seo')?.value || false;
@@ -78,6 +76,10 @@ export class HomeComponent{
 
     if (!seo && !ads && !web) {
       this.ErrorCheckbox = true;
+      setTimeout(() => {
+        this.ErrorCheckbox = false;
+      }, 4000);
+
       return;
     }
     this.ErrorCheckbox = false;

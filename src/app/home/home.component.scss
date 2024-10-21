@@ -20,6 +20,7 @@ header {
   max-width: 1200px;
   padding: 0 20px;
 }
+
 .menu-hamburguesa {
   display: none;
   flex-direction: column;
@@ -54,7 +55,7 @@ header {
 }
 
 .navbar a:hover {
-  color: rgb(218, 126, 198);
+  color: #fbdfca;
 }
 
 .img-logo {
@@ -62,6 +63,78 @@ header {
   filter: invert(100%);
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-left: 2px solid rgb(7, 177, 163);
+  border-right: 2px solid rgb(7, 177, 163);
+  max-width: 600px;
+  width: 80%;
+}
+
+.img-logo-modal {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+}
+
+.modal-menu {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.modal-menu li {
+  margin: 10px 0;
+}
+
+.modal-menu a {
+  text-decoration: none;
+  color: rgb(7, 177, 163);
+  font-size: 24px;
+  font-family: "Montserrat";
+}
+
+.modal-menu a:hover {
+  color: rgb(218, 126, 198);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.close-button {
+  background-color: rgb(218, 126, 198);
+  color: white;
+  border: none;
+  width: 80%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: rgb(240, 171, 226);
+}
 .container-imagen {
   display: flex;
   justify-content: center;
@@ -242,6 +315,7 @@ footer {
   width: 30%;
   filter: invert(100%);
 }
+
 .footer-left {
   flex: 1;
 }
@@ -250,6 +324,10 @@ footer {
   color: white;
   text-align: center;
   flex: 1;
+}
+
+.empresa{
+  margin-top: 10px;
 }
 
 .footer-right {
@@ -274,7 +352,67 @@ footer {
   color: rgb(218, 126, 198);
 }
 
+input.is-invalid {
+  border: 1px solid red;
+}
+
+.error {
+  display: flex;
+  justify-content: start;
+  color: red;
+  font-size: 12px;
+}
+
+.error-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(250, 247, 242);
+  color: red;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 0.5s ease-in-out, fadeOutUp 0.5s ease-in-out 4s;
+}
+
+.fas.fa-exclamation-triangle {
+  color: red;
+}
+button.disabled-button {
+  background-color: rgb(240, 171, 226);
+  cursor: not-allowed;
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 768px) {
+  .header-container {
+    justify-content: space-between;
+  }
+  
   .navbar {
     display: none;
     flex-direction: column;
@@ -286,7 +424,11 @@ footer {
 
   .menu-hamburguesa {
     display: flex;
+    justify-content: end;
+  }
 
+  .img-logo{
+    justify-content: start;
   }
 
   h2 {
@@ -363,12 +505,16 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-
+  .img-footer {
+    margin-bottom: 15px;
+  }
+  .empresa{
+    margin-top: 0;
+  }
   .footer-left, .footer-center, .footer-right {
     text-align: center;
     flex: none;
   }
-
 }
 
 @media (max-width: 576px) {
