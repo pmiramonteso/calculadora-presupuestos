@@ -407,7 +407,11 @@ button.disabled-button {
     opacity: 0;
   }
 }
-
+@media (max-width: 1020px) {
+  .img-footer {
+    width: 35%;
+  }
+}
 @media (max-width: 768px) {
   .header-container {
     justify-content: space-between;
@@ -507,6 +511,7 @@ button.disabled-button {
   }
   .img-footer {
     margin-bottom: 15px;
+    width: 50%;
   }
   .empresa{
     margin-top: 0;

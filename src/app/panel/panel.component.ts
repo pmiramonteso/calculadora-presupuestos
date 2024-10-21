@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-panel',
   standalone: true,
@@ -11,12 +12,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss']
 })
-export class PanelComponent {
+export class PanelComponent{
   @Output() totalWebCost = new EventEmitter<number>();
   @Output() paginasChange = new EventEmitter<number>();
   @Output() idiomasChange = new EventEmitter<number>();
 
   form: FormGroup;
+
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -30,6 +32,10 @@ export class PanelComponent {
     });
   }
 
+  logAbrirModal(tipo: string) {
+    console.log(`Abriendo modal de: ${tipo}`);
+  }
+  
   calcularTotal(values: any): number {
     return (values.numeroDePaginas * 30) + (values.numeroDeIdiomas * 30);
   }
@@ -62,4 +68,5 @@ export class PanelComponent {
     }
   }
 }
+
 
