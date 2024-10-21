@@ -23,9 +23,9 @@ Para instalar el proyecto en un entorno local, sigue estos pasos:
 
 Clona el repositorio:
 
-git clone https://github.com/pmiramonteso/sprint-6.git
+git clone https://github.com/pmiramonteso/calculadora-presupuestos.git
 
-Navega al directorio del proyecto: cd sprint-6
+Navega al directorio del proyecto: cd calculadora-presupuestos
 
 Instala las dependencias de Node.js: npm install
 
