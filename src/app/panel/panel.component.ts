@@ -17,6 +17,11 @@ export class PanelComponent{
 
   form: FormGroup;
 
+  contadorPaginasAbierto: number = 0;
+  contadorPaginasCerrado: number = 0;
+
+  contadorIdiomasAbierto: number = 0;
+  contadorIdiomasCerrado: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -28,10 +33,6 @@ export class PanelComponent{
       this.paginasChange.emit(values.numeroDePaginas);
       this.idiomasChange.emit(values.numeroDeIdiomas);
     });
-  }
-
-  logAbrirModal(tipo: string) {
-    console.log(`Abriendo modal de: ${tipo}`);
   }
   
   calcularTotal(values: any): number {
@@ -63,6 +64,26 @@ export class PanelComponent{
       this.form.patchValue({
         numeroDeIdiomas: this.form.value.numeroDeIdiomas - 1
       });
+    }
+  }
+
+  modalAbierto(tipo: string) {
+    if (tipo === 'paginas') {
+      this.contadorPaginasAbierto++;
+      console.log(`El modal de páginas se ha abierto ${this.contadorPaginasAbierto} veces`);
+    } else if (tipo === 'idiomas') {
+      this.contadorIdiomasAbierto++;
+      console.log(`El modal de idiomas se ha abierto ${this.contadorIdiomasAbierto} veces`);
+    }
+  }
+
+  modalCerrado(tipo: string) {
+    if (tipo === 'paginas') {
+      this.contadorPaginasCerrado++;
+      console.log(`El modal de páginas se ha cerrado ${this.contadorPaginasCerrado} veces`);
+    } else if (tipo === 'idiomas') {
+      this.contadorIdiomasCerrado++;
+      console.log(`El modal de idiomas se ha cerrado ${this.contadorIdiomasCerrado} veces`);
     }
   }
 }

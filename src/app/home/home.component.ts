@@ -5,12 +5,12 @@ import { BudgetService } from '../service/budget.service';
 import { Budget } from '../service/budget.model';
 import { BudgetListComponent } from '../budget-list/budget-list.component';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, PanelComponent, BudgetListComponent, CommonModule],
+  imports: [ReactiveFormsModule, PanelComponent, BudgetListComponent, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
