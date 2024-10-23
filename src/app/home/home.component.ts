@@ -38,7 +38,37 @@ export class HomeComponent implements OnInit{
       this.calcularTotal(values);
       this.updateUrl();
     });
+
+    //Con esto vuelvo a 0 si borro web
+    this.form.get('web')?.valueChanges.subscribe(web => {
+      if (!web) {
+      
+        this.numeroDePaginas = 0;
+        this.numeroDeIdiomas = 0;
+        this.form.patchValue({
+          numeroDePaginas: 0,
+          numeroDeIdiomas: 0
+        });
+        this.calcularTotal(this.form.value);
+        this.updateUrl();
+      }
+    });
   }
+
+  ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      this.form.patchValue({
+        seo: params['seo'] === 'true',
+        ads: params['ads'] === 'true',
+        web: params['web'] === 'true',
+        numeroDePaginas: params ['numeroDePaginas'] || 0,
+        numeroDeIdiomas: params ['numeroDeIdiomas']|| 0,
+      });
+      this.updateUrl();
+    });
+  }
+
   updateUrl(){
     const queryParams: any = {}
 
@@ -52,31 +82,17 @@ export class HomeComponent implements OnInit{
       queryParams.web = true
     }
     if(this.numeroDePaginas > 0){
-      queryParams.pagina = this.numeroDePaginas
+      queryParams.numeroDePaginas = this.numeroDePaginas
     }
     if(this.numeroDeIdiomas > 0){
-      queryParams.idioma = this.numeroDeIdiomas
+      queryParams.numeroDeIdiomas = this.numeroDeIdiomas
     }
 
-    if(Object.keys(queryParams).length > 0){
       this.router.navigate([], {
         queryParams: queryParams,
         queryParamsHandling: 'merge' 
       });
-    }
-  }
-
-  ngOnInit(): void {
-
-    this.route.queryParams.subscribe(params => {
-      this.form.patchValue({
-        seo: params['seo'] === 'true',
-        ads: params['ads'] === 'true',
-        web: params['web'] === 'true',
-        numeroDePaginas: params ['numeroDePaginas'] || '',
-        numeroDeIdiomas: params ['numeroDeIdiomas']|| '',
-      });
-    });
+    
   }
 
   toggleMenu() {
@@ -153,6 +169,7 @@ export class HomeComponent implements OnInit{
       this.webCost = 0;
       this.form.reset();
       this.total = 0;
+      this.updateUrl();
     }
   }
 }

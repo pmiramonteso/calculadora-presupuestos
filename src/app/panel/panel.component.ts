@@ -36,6 +36,9 @@ export class PanelComponent{
   }
   
   calcularTotal(values: any): number {
+    if (!values.web) {
+      return 0;
+    }
     return (values.numeroDePaginas * 30) + (values.numeroDeIdiomas * 30);
   }
 

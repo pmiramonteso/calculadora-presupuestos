@@ -35,9 +35,9 @@
           <p class="servicios">
             <b>Servicios contratados:</b><br>
             @if(budget.servicios.web){
-              <li> Web <br> 
+              <li> Web  
                 @if(budget.numeroDePaginas > 0) {
-                  <span> {{budget.numeroDePaginas}} {{ budget.numeroDePaginas === 1 ? 'página' : 'páginas'}}</span>
+                  <br><span> {{budget.numeroDePaginas}} {{ budget.numeroDePaginas === 1 ? 'página' : 'páginas'}}</span>
                 } <br>
                 @if(budget.numeroDeIdiomas > 0) {
                   <span> {{budget.numeroDeIdiomas}} {{ budget.numeroDeIdiomas === 1 ? 'idioma' : 'idiomas'}}</span>
