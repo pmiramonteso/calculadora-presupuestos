@@ -25,8 +25,8 @@ export class PanelComponent{
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      numeroDePaginas: [0, Validators.min(0)],
-      numeroDeIdiomas: [0, Validators.min(0)],
+      numeroDePaginas: [1, Validators.min(0)],
+      numeroDeIdiomas: [1, Validators.min(0)],
     });
 
     this.form.valueChanges.subscribe(values => {

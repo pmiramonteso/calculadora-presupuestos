@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit{
   form: FormGroup;
   total: number = 0;
   webCost: number = 0;
-  numeroDePaginas: number = 0;
-  numeroDeIdiomas: number = 0;
+  numeroDePaginas: number = 1;
+  numeroDeIdiomas: number = 1;
   ErrorCheckbox: boolean = false;
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService, private router: Router,
@@ -42,57 +42,16 @@ export class HomeComponent implements OnInit{
     //Con esto vuelvo a 0 si borro web
     this.form.get('web')?.valueChanges.subscribe(web => {
       if (!web) {
-      
-        this.numeroDePaginas = 0;
-        this.numeroDeIdiomas = 0;
+        this.numeroDePaginas = 1;
+        this.numeroDeIdiomas = 1;
         this.form.patchValue({
-          numeroDePaginas: 0,
-          numeroDeIdiomas: 0
+          numeroDePaginas: 1,
+          numeroDeIdiomas: 1
         });
         this.calcularTotal(this.form.value);
         this.updateUrl();
       }
     });
-  }
-
-  ngOnInit(): void {
-
-    this.route.queryParams.subscribe(params => {
-      this.form.patchValue({
-        seo: params['seo'] === 'true',
-        ads: params['ads'] === 'true',
-        web: params['web'] === 'true',
-        numeroDePaginas: params ['numeroDePaginas'] || 0,
-        numeroDeIdiomas: params ['numeroDeIdiomas']|| 0,
-      });
-      this.updateUrl();
-    });
-  }
-
-  updateUrl(){
-    const queryParams: any = {}
-
-    if(this.form.get('seo')?.value){
-        queryParams.seo = true
-      }
-    if(this.form.get('ads')?.value){
-      queryParams.ads = true
-    }
-    if(this.form.get('web')?.value){
-      queryParams.web = true
-    }
-    if(this.numeroDePaginas > 0){
-      queryParams.numeroDePaginas = this.numeroDePaginas
-    }
-    if(this.numeroDeIdiomas > 0){
-      queryParams.numeroDeIdiomas = this.numeroDeIdiomas
-    }
-
-      this.router.navigate([], {
-        queryParams: queryParams,
-        queryParamsHandling: 'merge' 
-      });
-    
   }
 
   toggleMenu() {
@@ -111,17 +70,19 @@ export class HomeComponent implements OnInit{
   }
 
   calcularTotal(values: any) {
+    const paginasExtra = this.numeroDePaginas > 1 ? this.numeroDePaginas - 1 : 0;
+    const idiomasExtra = this.numeroDeIdiomas > 1 ? this.numeroDeIdiomas - 1 : 0;
+
     this.total = this.budgetService.calcularTotal(
       values.seo,
       values.ads,
       values.web,
-      this.numeroDePaginas,
-      this.numeroDeIdiomas,
+      paginasExtra,
+      idiomasExtra,
       this.webCost
     );
     this.budgetService.actualizarPresupuesto(this.total);
   }
-
 
   onWebCostChange(cost: number) {
     this.webCost = cost;
@@ -164,12 +125,70 @@ export class HomeComponent implements OnInit{
       };
 
       this.budgetService.addBudget(budget);
-      this.numeroDePaginas = 0;
-      this.numeroDeIdiomas = 0;
+      this.numeroDePaginas = 1;
+      this.numeroDeIdiomas = 1;
       this.webCost = 0;
       this.form.reset();
       this.total = 0;
       this.updateUrl();
     }
   }
+
+  ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      this.form.patchValue({
+        seo: params['seo'] === 'true',
+        ads: params['ads'] === 'true',
+        web: params['web'] === 'true',
+      });
+      this.numeroDePaginas = params['numeroDePaginas'] ? +params['numeroDePaginas'] : 1;
+      this.numeroDeIdiomas = params['numeroDeIdiomas'] ? +params['numeroDeIdiomas'] : 1;
+
+      this.calcularTotal(this.form.value);
+    });
+  }
+
+  updateUrl(){
+    const queryParams: any = {}
+
+    if(this.form.get('seo')?.value){
+        queryParams.seo = true
+      } else {
+    queryParams.seo = null;
+    }
+
+    if(this.form.get('ads')?.value){
+      queryParams.ads = true
+    } else {
+      queryParams.ads = null;
+    }
+
+    if(this.form.get('web')?.value){
+      queryParams.web = true
+
+    if(this.numeroDePaginas > 0){
+      queryParams.numeroDePaginas = this.numeroDePaginas
+    } else {
+      queryParams.numeroDePaginas = null;
+    }
+
+    if(this.numeroDeIdiomas > 0){
+      queryParams.numeroDeIdiomas = this.numeroDeIdiomas
+    } else {
+      queryParams.numeroDeIdiomas = null;
+    }
+
+  } else {
+    queryParams.web = null;
+    queryParams.numeroDePaginas = null;
+    queryParams.numeroDeIdiomas = null;
+  }
+      this.router.navigate([], {
+        queryParams: queryParams,
+        queryParamsHandling: 'merge' 
+      });
+  }
 }
+
+
