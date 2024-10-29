@@ -91,6 +91,8 @@ export class HomeComponent implements OnInit{
   }
 
   solicitarPresupuesto() {
+    this.form.markAllAsTouched();
+    
     const { NombreCliente, Telefono, Email } = this.form.value;
     const seo = this.form.get('seo')?.value || false;
     const ads = this.form.get('ads')?.value || false;
